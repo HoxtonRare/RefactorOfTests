@@ -30,13 +30,14 @@ public class testWb {
         @Test
         void testChangeCity() {
             MainPage mainPage = new MainPage();
-            ChangeCity changeCity = mainPage.openChangeCityElement();
-            changeCity.inputCity(DataForTests.CITY_VALUE);
-            String result = changeCity.getFirstAddress();
-            changeCity.openFirstAddressPage();
+            String result = mainPage.openChangeCityElement()
+                            .inputCity(DataForTests.CITY_VALUE)
+                            .getFirstAddress();
+            mainPage.openFirstAddressPage();
 
-            changeCity.checkAddress(result);
-            changeCity.selectAddress();
+            mainPage.checkAddress(result);
+
+            mainPage.selectAddress();
 
             mainPage.isOpen();
             mainPage.checkForAddress(result);
@@ -46,19 +47,17 @@ public class testWb {
         void testFilters() {
             String result = "";
             MainPage mainPage = new MainPage();
-            Catalog catalog = mainPage.openCatalog();
-            SearchResult searchResult = catalog.openLaptops();
+            SearchResult searchResult = mainPage.openCatalog().openLaptops();
 
             searchResult.isOpenFromCatalog();
 
-            FilterSelection filterSelection = searchResult.openFilterSelection();
-            filterSelection.setStartPrice(DataForTests.START_PRICE);
-            filterSelection.setEndPrice(DataForTests.END_PRICE);
-            filterSelection.setDelivery();
-            filterSelection.setDiagonal();
-            filterSelection.setManufacturer();
-            result = filterSelection.getCountProduct(result);
-            searchResult = filterSelection.applyFilters();
+            result = searchResult.openFilters().setFilterStartPrice(DataForTests.START_PRICE)
+                    .setFilterEndPrice(DataForTests.END_PRICE)
+                    .setFilterDelivery()
+                    .setFilterDiagonal()
+                    .setFilterManufacturer()
+                    .getCountOfProduct(result);
+            searchResult.applyFilters();
 
             searchResult.isApplyFilters();
             searchResult.checkCountOfProduct(result);

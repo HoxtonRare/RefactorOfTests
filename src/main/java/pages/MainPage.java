@@ -30,25 +30,49 @@ public class MainPage {
         return new SearchResult();
     }
 
-    public ChangeCity openChangeCityElement() {
+    public MainPage openChangeCityElement() {
         changeCity.open();
-        return changeCity;
+        return this;
     }
 
     public void checkForAddress(String expected) {
         Asserts.checkTextByXpath(XPATH_FOR_CHANGE_CITY, expected);
     }
 
-    public Catalog openCatalog() {
+    public MainPage openCatalog() {
         catalog.open();
-        return catalog;
+        return this;
     }
 
-    public void openCategoryOfCatalogString (String xpath) {
-        $(By.xpath(xpath)).shouldBe(clickable).click();
+    public SearchResult openLaptops () {
+        catalog.openLaptops();
+        return new SearchResult();
     }
 
     public void isOpen() {
         Asserts.checkForPage(WB);
+    }
+
+    public MainPage inputCity(String city) {
+        changeCity.inputCity(city);
+        return this;
+    }
+
+    public String getFirstAddress() {
+        return changeCity.getFirstAddress();
+    }
+
+    public MainPage openFirstAddressPage() {
+        changeCity.openFirstAddressPage();
+        return this;
+    }
+
+    public void checkAddress(String expected) {
+        changeCity.checkAddress(expected);
+    }
+
+    public MainPage selectAddress() {
+        changeCity.selectAddress();
+        return this;
     }
 }

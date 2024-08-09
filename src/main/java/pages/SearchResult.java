@@ -1,5 +1,6 @@
 package pages;
 
+import Data.DataForTests;
 import asserts.Asserts;
 import elements.FilterSelection;
 import elements.SearchField;
@@ -64,5 +65,44 @@ public class SearchResult {
         Asserts.checkTextByXpath(XPATH_FOR_THIRD_FILTER_ON_PAGE, thirdFilter);
         Asserts.checkTextByXpath(XPATH_FOR_FOURTH_FILTER_ON_PAGE, fourthFilter);
         Asserts.checkForVisibleByXpath(XPATH_FOR_RESET_FILTERS);
+    }
+
+    public SearchResult openFilters() {
+        filterSelection.open();
+        return this;
+    }
+
+    public SearchResult setFilterStartPrice(String price) {
+        filterSelection.setStartPrice(price);
+        return this;
+    }
+
+    public SearchResult setFilterEndPrice(String price) {
+        filterSelection.setEndPrice(price);
+        return this;
+    }
+
+    public SearchResult setFilterDelivery() {
+        filterSelection.setDelivery();
+        return this;
+    }
+
+    public SearchResult setFilterDiagonal() {
+        filterSelection.setDiagonal();
+        return this;
+    }
+
+    public SearchResult setFilterManufacturer() {
+        filterSelection.setManufacturer();
+        return this;
+    }
+
+    public SearchResult applyFilters() {
+        filterSelection.applyFilters();
+        return this;
+    }
+
+    public String getCountOfProduct(String expected) {
+        return filterSelection.getCountProduct(expected);
     }
 }
