@@ -22,9 +22,9 @@ public class testWb {
         MainPage mainPage = new MainPage();
         SearchResult searchResult = mainPage.search(DataForTests.SEARCH_VALUE);
 
-        searchResult.checkResultOfSearch();
-        searchResult.clearSearchField();
-        searchResult.checkForClearSearchField();
+        searchResult.checkResultOfSearch()
+                .clearSearchField()
+                .checkForClearSearchField();
     }
 
         @Test
@@ -33,14 +33,11 @@ public class testWb {
             String result = mainPage.openChangeCityElement()
                             .inputCity(DataForTests.CITY_VALUE)
                             .getFirstAddress();
-            mainPage.openFirstAddressPage();
-
-            mainPage.checkAddress(result);
-
-            mainPage.selectAddress();
-
-            mainPage.isOpen();
-            mainPage.checkForAddress(result);
+            mainPage.openFirstAddressPage()
+                    .checkAddress(result)
+                    .selectAddress()
+                    .isOpen()
+                    .checkForAddress(result);
         }
 
         @Test
@@ -59,8 +56,8 @@ public class testWb {
                     .getCountOfProduct(result);
             searchResult.applyFilters();
 
-            searchResult.isApplyFilters();
-            searchResult.checkCountOfProduct(result);
-            searchResult.checkForApplyFilters(DataForTests.FILTER_DELIVERY, DataForTests.FILTER_MANUFACTURER, DataForTests.FILTER_PRICE, DataForTests.FILTER_DIAGONAL);
+            searchResult.isApplyFilters()
+                    .checkCountOfProduct(result)
+                    .checkForApplyFilters(DataForTests.FILTER_DELIVERY, DataForTests.FILTER_MANUFACTURER, DataForTests.FILTER_PRICE, DataForTests.FILTER_DIAGONAL);
         }
 }

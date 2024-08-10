@@ -35,8 +35,9 @@ public class MainPage {
         return this;
     }
 
-    public void checkForAddress(String expected) {
+    public MainPage checkForAddress(String expected) {
         Asserts.checkTextByXpath(XPATH_FOR_CHANGE_CITY, expected);
+        return this;
     }
 
     public MainPage openCatalog() {
@@ -49,8 +50,9 @@ public class MainPage {
         return new SearchResult();
     }
 
-    public void isOpen() {
+    public MainPage isOpen() {
         Asserts.checkForPage(WB);
+        return this;
     }
 
     public MainPage inputCity(String city) {
@@ -67,8 +69,9 @@ public class MainPage {
         return this;
     }
 
-    public void checkAddress(String expected) {
+    public MainPage checkAddress(String expected) {
         changeCity.checkAddress(expected);
+        return this;
     }
 
     public MainPage selectAddress() {

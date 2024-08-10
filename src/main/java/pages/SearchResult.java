@@ -27,27 +27,32 @@ public class SearchResult {
 
     SearchField searchField = new SearchField();
 
-    public void checkResultOfSearch() {
+    public SearchResult checkResultOfSearch() {
         Asserts.checkTextByXpath(XPATH_FOR_TEXT_AFTER_SEARCH, TEXT_AFTER_SEARCH);
         Asserts.checkTextByXpath(XPATH_FOR_FIRST_FILTER, FIRST_FILTER);
         Asserts.checkTextByXpath(XPATH_FOR_SORTING, SORTING_SEARCH);
         Asserts.checkTextByXpath(XPATH_FOR_MANUFACTURER, FILTER_MANUFACTURER);
+        return this;
     }
 
-    public void clearSearchField() {
+    public SearchResult clearSearchField() {
         searchField.clear();
+        return this;
     }
 
-    public void checkForClearSearchField() {
+    public SearchResult checkForClearSearchField() {
         Asserts.checkEmptyInputById(searchField.getID());
+        return this;
     }
 
-    public void isOpenFromCatalog() {
+    public SearchResult isOpenFromCatalog() {
         Asserts.checkForPage(PAGE_AFTER_SEARCH);
+        return this;
     }
 
-    public void isApplyFilters() {
+    public SearchResult isApplyFilters() {
         Asserts.checkForPage(PAGE_WITH_FILTERS);
+        return this;
     }
 
     public FilterSelection openFilterSelection() {
@@ -55,8 +60,9 @@ public class SearchResult {
         return filterSelection;
     }
 
-    public void checkCountOfProduct(String expected) {
+    public SearchResult checkCountOfProduct(String expected) {
         Asserts.checkTextByXpath(XPATH_FOR_COUNT_OF_PRODUCT_ON_PAGE, expected);
+        return this;
     }
 
     public void checkForApplyFilters(String firstFilter, String secondFilter, String thirdFilter, String fourthFilter) {
